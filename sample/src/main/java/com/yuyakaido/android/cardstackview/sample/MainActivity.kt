@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.google.android.material.navigation.NavigationView
 import com.yuyakaido.android.cardstackview.*
+import com.yuyakaido.android.cardstackview.sample.CardStackAdapter.BottomClickListener
 import java.util.*
 
 class MainActivity : AppCompatActivity(), CardStackListener {
@@ -23,7 +24,29 @@ class MainActivity : AppCompatActivity(), CardStackListener {
     private val drawerLayout by lazy { findViewById<DrawerLayout>(R.id.drawer_layout) }
     private val cardStackView by lazy { findViewById<CardStackView>(R.id.card_stack_view) }
     private val manager by lazy { CardStackLayoutManager(this, this) }
-    private val adapter by lazy { CardStackAdapter(createSpots()) }
+    private val adapter by lazy {
+        CardStackAdapter(createSpots(), object : BottomClickListener {
+            override fun likeClick() {
+                val setting = SwipeAnimationSetting.Builder()
+                        .setDirection(Direction.Right)
+                        .setDuration(Duration.Normal.duration)
+                        .setInterpolator(AccelerateInterpolator())
+                        .build()
+                manager.setSwipeAnimationSetting(setting)
+                cardStackView.swipe()
+            }
+
+            override fun nextClick() {
+                val setting = SwipeAnimationSetting.Builder()
+                        .setDirection(Direction.Left)
+                        .setDuration(Duration.Normal.duration)
+                        .setInterpolator(AccelerateInterpolator())
+                        .build()
+                manager.setSwipeAnimationSetting(setting)
+                cardStackView.swipe()
+            }
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,7 +128,7 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         val skip = findViewById<View>(R.id.skip_button)
         skip.setOnClickListener {
             val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(if (RTLUtil.isRTL()) Direction.Right else Direction.Left)
+                    .setDirection(Direction.Left)
                     .setDuration(Duration.Normal.duration)
                     .setInterpolator(AccelerateInterpolator())
                     .build()
@@ -127,7 +150,7 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         val like = findViewById<View>(R.id.like_button)
         like.setOnClickListener {
             val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(if (RTLUtil.isRTL()) Direction.Left else Direction.Right)
+                    .setDirection(Direction.Right)
                     .setDuration(Duration.Normal.duration)
                     .setInterpolator(AccelerateInterpolator())
                     .build()

@@ -24,7 +24,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top"
         android:padding="16dp"
         android:background="@drawable/gradation_black">
 
@@ -46,6 +46,42 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/button_container"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:clipChildren="false">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/skip_red_24dp"
+            app:backgroundTint="@android:color/white"
+            app:fabSize="auto"
+            app:rippleColor="#22ED7563"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/likeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_toRightOf="@+id/nextBtn"
+            android:layout_toEndOf="@+id/nextBtn"
+            android:src="@drawable/like_green_24dp"
+            app:backgroundTint="@android:color/white"
+            app:fabSize="auto"
+            app:rippleColor="#226FE2B3"/>
+    </RelativeLayout>
+
     <FrameLayout
         android:id="@+id/left_overlay"
         android:layout_width="match_parent"
@@ -59,6 +95,7 @@
             android:layout_gravity="center"/>
 
     </FrameLayout>
+
 
     <FrameLayout
         android:id="@+id/right_overlay"

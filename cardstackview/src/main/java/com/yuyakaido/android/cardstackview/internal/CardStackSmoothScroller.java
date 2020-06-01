@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.RTLUtil;
 import com.yuyakaido.android.cardstackview.RewindAnimationSetting;
 
 import androidx.annotation.NonNull;
@@ -145,10 +146,10 @@ public class CardStackSmoothScroller extends RecyclerView.SmoothScroller {
         int dx = 0;
         switch (setting.getDirection()) {
             case Left:
-                dx = -state.width * 2;
+                dx = RTLUtil.isRTL() ? state.width * 2 : -state.width * 2;
                 break;
             case Right:
-                dx = state.width * 2;
+                dx = RTLUtil.isRTL() ? -state.width * 2 : state.width * 2;
                 break;
             case Top:
             case Bottom:
