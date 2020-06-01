@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         val skip = findViewById<View>(R.id.skip_button)
         skip.setOnClickListener {
             val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(Direction.Left)
+                    .setDirection(if (RTLUtil.isRTL()) Direction.Right else Direction.Left)
                     .setDuration(Duration.Normal.duration)
                     .setInterpolator(AccelerateInterpolator())
                     .build()
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         val like = findViewById<View>(R.id.like_button)
         like.setOnClickListener {
             val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(Direction.Right)
+                    .setDirection(if (RTLUtil.isRTL()) Direction.Left else Direction.Right)
                     .setDuration(Duration.Normal.duration)
                     .setInterpolator(AccelerateInterpolator())
                     .build()

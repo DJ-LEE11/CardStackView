@@ -4,11 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.yuyakaido.android.cardstackview.internal.CardStackDataObserver;
 import com.yuyakaido.android.cardstackview.internal.CardStackSnapHelper;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CardStackView extends RecyclerView {
 

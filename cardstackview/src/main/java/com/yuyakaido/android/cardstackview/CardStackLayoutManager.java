@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.yuyakaido.android.cardstackview.internal.CardStackSetting;
 import com.yuyakaido.android.cardstackview.internal.CardStackSmoothScroller;
 import com.yuyakaido.android.cardstackview.internal.CardStackState;
 import com.yuyakaido.android.cardstackview.internal.DisplayUtil;
 
 import java.util.List;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CardStackLayoutManager
         extends RecyclerView.LayoutManager
@@ -467,11 +467,11 @@ public class CardStackLayoutManager
     }
 
     private void updateOverlay(View view) {
-        View leftOverlay = view.findViewById(R.id.left_overlay);
+        View leftOverlay = view.findViewById(RTLUtil.isRTL() ? R.id.right_overlay : R.id.left_overlay);
         if (leftOverlay != null) {
             leftOverlay.setAlpha(0.0f);
         }
-        View rightOverlay = view.findViewById(R.id.right_overlay);
+        View rightOverlay = view.findViewById(RTLUtil.isRTL() ? R.id.left_overlay : R.id.right_overlay);
         if (rightOverlay != null) {
             rightOverlay.setAlpha(0.0f);
         }
